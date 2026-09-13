@@ -32,15 +32,15 @@
 
 <div align="center">
 
-<img src="s1.png" width="800" alt="Dashboard screenshot 1"/>
+<img src="https://github.com/MuhammadMudassirRaza12345/Crypto-Market-Analytics-Pipeline/blob/main/s1.PNG" width="800" alt="Dashboard screenshot 1"/>
 
 <br/><br/>
 
-<img src="s2.png" width="800" alt="Dashboard screenshot 2"/>
+<img src="https://github.com/MuhammadMudassirRaza12345/Crypto-Market-Analytics-Pipeline/blob/main/s1.PNG" width="800" alt="Dashboard screenshot 2"/>
 
 <br/><br/>
 
-<img src="s3.png" width="800" alt="Dashboard screenshot 3"/>
+<img src="https://github.com/MuhammadMudassirRaza12345/Crypto-Market-Analytics-Pipeline/blob/main/s1.PNG" width="800" alt="Dashboard screenshot 3"/>
 
 </div>
 
