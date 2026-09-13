@@ -15,6 +15,7 @@
 
 ## 📑 Table of Contents
 
+- [Screenshots](#-screenshots)
 - [Architecture](#-architecture)
 - [Tech Stack](#-tech-stack)
 - [Data Modeling Details](#-data-modeling-details)
@@ -24,6 +25,24 @@
 - [Setup](#-setup)
 - [Usage](#-usage)
 - [Key Engineering Decisions](#-key-engineering-decisions)
+
+---
+
+## 🖼 Screenshots
+
+<div align="center">
+
+<img src="s1.png" width="800" alt="Dashboard screenshot 1"/>
+
+<br/><br/>
+
+<img src="s2.png" width="800" alt="Dashboard screenshot 2"/>
+
+<br/><br/>
+
+<img src="s3.png" width="800" alt="Dashboard screenshot 3"/>
+
+</div>
 
 ---
 
