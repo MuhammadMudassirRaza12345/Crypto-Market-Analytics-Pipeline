@@ -6,9 +6,10 @@ from google.oauth2 import service_account
 from datetime import datetime, timezone
 
 # ---- CONFIG ----
-PROJECT_ID = "my-learning-gcp-123"
+PROJECT_ID = "enduring-badge-425117-c9"
 DATASET = "crypto_analytics"
 TABLE = "raw_crypto_prices"
+# DATASET_LOCATION = "US"   # change to match your GCP region if needed
 COINS = "bitcoin,ethereum,solana,cardano,dogecoin,ripple,polkadot,litecoin,chainlink,avalanche-2"
 
 def load_credentials(env_file=".env.yaml"):
@@ -18,6 +19,18 @@ def load_credentials(env_file=".env.yaml"):
     creds_dict = json.loads(config["PATH_CREDS_SERVICE_ACCOUNT"])
     credentials = service_account.Credentials.from_service_account_info(creds_dict)
     return credentials
+
+def ensure_dataset_exists(client, dataset_id):
+    """Create the dataset if it doesn't already exist."""
+    dataset_ref = f"{PROJECT_ID}.{dataset_id}"
+    try:
+        client.get_dataset(dataset_ref)
+        print(f"Dataset '{dataset_id}' already exists.")
+    except Exception:
+        dataset = bigquery.Dataset(dataset_ref)
+        # dataset.location = DATASET_LOCATION
+        client.create_dataset(dataset, exists_ok=True)
+        print(f"Dataset '{dataset_id}'.")
 
 def fetch_crypto_data():
     url = "https://api.coingecko.com/api/v3/coins/markets"
@@ -46,12 +59,17 @@ def transform_data(raw_data):
             "volume_24h": coin.get("total_volume"),
             "price_change_24h": coin.get("price_change_percentage_24h"),
             "fetched_at": fetched_at
+          
             
         })
     return rows
 
 def load_to_bigquery(rows, credentials):
     client = bigquery.Client(project=PROJECT_ID, credentials=credentials)
+
+    # Make sure the dataset exists before we try to load into a table inside it
+    ensure_dataset_exists(client, DATASET)
+
     table_id = f"{PROJECT_ID}.{DATASET}.{TABLE}"
 
     job_config = bigquery.LoadJobConfig(

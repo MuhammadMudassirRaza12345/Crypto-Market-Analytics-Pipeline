@@ -1,3 +1,8 @@
 requests 
 google-cloud-bigquery
 pyyaml
+openai
+pandas
+db-dtypes
+streamlit
+plotly
